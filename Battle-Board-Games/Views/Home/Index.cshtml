@@ -10,14 +10,27 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-<h5>Seja Bem Vindo! - @UserManager.GetUserName(User) </h5>
-<p>Quantidade de Batalhas do Jogador</p><p id="qtdBatalhasJogador"></p>
-<button class="btn btn-primary" onclick="criarJogo()">
-    Criar Jogo
-</button>
+    <h5>Seja Bem Vindo! - @UserManager.GetUserName(User) </h5>
+    <p>Quantidade de Batalhas do Jogador</p><p id="qtdBatalhasJogador"></p>
+    <div class="row">
+        <div class="col-md-6">
+            <button id="criarJogo" class="btn btn-primary" disabled>
+                Criar Jogo
+            </button>
+        </div>
+        <div class="col-md-6">
+            <select id="idNacao" class="form-control" >
+                <option value="0" disabled selected>--Selecione uma Nação--</option>
+                <option value="1">India</option>
+                <option value="2">Persa</option>
+                <option value="3">Egito</option>
+            </select>
+        </div>
+    </div>
+
 }
 <p>Quantidade de Batalhas Total:</p><p id="qtdBatalhas"></p>
 
-@section Scripts{ 
-<script src="~/js/batalhas.js"></script>
+@section Scripts{
+    <script src="~/js/batalhas.js"></script>
 }

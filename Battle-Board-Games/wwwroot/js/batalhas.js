@@ -29,11 +29,19 @@ $.ajax({
         }
     )
     .fail();
-function criarJogo() {
+
+$('#idNacao').change(function () {
+    
+    if ($(this).val() != "0") {
+        $('#criarJogo').attr('disabled', false);
+    }
+});
+
+$("#criarJogo").click(function () {
     $.ajax({
         type: 'GET',
         url: baseURL +
-            "/api/BatalhasAPI/CriarBatalha"
+            "/api/BatalhasAPI/CriarBatalha/" + $("#idNacao").val()
     })
         .done(
             function (data) {
@@ -43,5 +51,5 @@ function criarJogo() {
         .fail(
             function () {
                 alert("Erro ao Criar a Batalha.")
-            });
-}
+            })
+       });

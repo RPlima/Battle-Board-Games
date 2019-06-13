@@ -271,9 +271,9 @@ namespace Battle_Board_Games.Controllers
         }
 
         [HttpGet]
-        [Route("CriarBatalha")]
+        [Route("CriarBatalha/{nacao}")]
         [Authorize]
-        public async Task<IActionResult> CriarBatalha()
+        public async Task<IActionResult> CriarBatalha(int nacao)
         {
             var usuario = _usuarioService.ObterUsuarioEmail(this.User);
 
@@ -294,7 +294,21 @@ namespace Battle_Board_Games.Controllers
             }        
             Exercito e = new Exercito();
             e.Usuario = usuario;
-            e.Nacao = Nacao.Egito;
+            if(nacao == 0)
+            {
+                return BadRequest("Selecione uma nação antes de criar a partida");
+            }
+            else if (nacao == 1)
+            {
+                e.Nacao = Nacao.India;
+            }else if (nacao == 2)
+            {
+                e.Nacao = Nacao.Persia;
+            }else if(nacao == 3)
+            {
+                e.Nacao = Nacao.Egito;
+            }
+
             if(batalha.ExercitoBrancoId == null)
             {
                 batalha.ExercitoBranco = e;

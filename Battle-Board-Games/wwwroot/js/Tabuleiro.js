@@ -59,6 +59,8 @@ $(function () {
         var pecas = batalha.tabuleiro.elementosDoExercito;
         var ExercitoBrancoId = batalha.exercitoBrancoId;
         var ExercitoPretoId = batalha.exercitoPretoId;
+        var ExercitoBrancoNacao = batalha.exercitoBranco.Nacao;
+        var ExercitoPretoNacao = batalha.exercitoPreto.Nacao;
         var i;        
         var EmailUsuario = sessionStorage.getItem("EmailUsuario");
         //Esvaziar o tabuleiro antes de montá-lo.
@@ -77,7 +79,8 @@ $(function () {
                     }
                     if (pecas[x].posicao.altura == i && pecas[x].posicao.largura == j){
                         pecasNoTabuleiro[i][j] = pecas[x];                    
-                        if (pecas[x].exercitoId==ExercitoBrancoId) {
+                        if (pecas[x].exercitoId == ExercitoBrancoId) {
+                            if()
                             $("#" + nome_casa).append("<img src='https://www.w3schools.com/images/compatible_firefox.gif' class='peca' id='" + nome_casa.replace("casa", "peca_preta") + "'/>");
                         }
                         else if (pecas[x].exercitoId == ExercitoPretoId) {
